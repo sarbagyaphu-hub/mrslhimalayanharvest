@@ -2285,9 +2285,9 @@
             "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
           desc:
             "Premium roasted coffee with rich Himalayan aroma."
-        }
+       ]
 
-      ]}
+    };
 
     /* BASIC IMAGES */
 
@@ -2420,6 +2420,53 @@
       `;
 
       productGrid.appendChild(card);
+
+    });
+        /* SPLASH HIDE */
+    window.addEventListener("load", () => {
+
+      setTimeout(() => {
+
+        document
+          .getElementById("splash")
+          .classList.add("hide");
+
+      }, 2200);
+
+    });
+
+    /* REVEAL ANIMATION */
+    const revealObserver =
+      new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+
+        });
+
+      }, { threshold: 0.14 });
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(el => {
+
+        revealObserver.observe(el);
+
+      });
+
+    /* MOBILE MENU */
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const navMenu =
+      document.getElementById("navMenu");
+
+    menuBtn.addEventListener("click", () => {
+
+      navMenu.classList.toggle("open");
 
     });
 
